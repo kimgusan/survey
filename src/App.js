@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ArrowRight, ArrowLeft, CheckCircle, HelpCircle, BarChart } from "lucide-react";
+import { SocialKakao } from "./api";
+// import { SocialKakao } from "./kakao";
 
 const questions = [
     {
@@ -99,6 +101,7 @@ const App = () => {
     const [selectedAnswers, setSelectedAnswers] = useState(Array(questions.length).fill(null));
     const [showResult, setShowResult] = useState(false);
     const [certifiResult, setCertifiResult] = useState(true);
+    const code = new URL(window.location.href).searchParams.get("code");
 
     const handleAnswer = (answerIndex) => {
         const newAnswers = [...selectedAnswers];
@@ -121,7 +124,9 @@ const App = () => {
     };
     // 로그인 버튼 클릭 시 일반 설문조사로 넘어가는 부분 (차후 인증 아이콘 클릭 시 해당 기능 Click icon 에 따라 호출하는 api 가 달라질 예정)
     const loginBtn = () => {
-        setCertifiResult(false);
+        console.log(200);
+        // setCertifiResult(true);
+        console.log(SocialKakao());
     };
 
     const allProducts = [
@@ -317,7 +322,7 @@ const App = () => {
                     className="flex items-center justify-center w-full px-4 py-2 text-sm text-white text-center transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
                     onClick={loginBtn}
                 >
-                    로그인
+                    <SocialKakao />
                 </button>
             </div>
         </div>
