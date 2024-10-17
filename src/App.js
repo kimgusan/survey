@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { ArrowRight, ArrowLeft, CheckCircle, HelpCircle, BarChart } from "lucide-react";
 import { SocialKakao } from "./api";
-// import { SocialKakao } from "./kakao";
+import { BrowserRouter as Router, Route, Switch, Link, Routes } from "react-router-dom";
+import KakaoLogin from "react-kakao-login";
 
 const questions = [
     {
@@ -100,8 +101,7 @@ const App = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState(Array(questions.length).fill(null));
     const [showResult, setShowResult] = useState(false);
-    const [certifiResult, setCertifiResult] = useState(true);
-    const code = new URL(window.location.href).searchParams.get("code");
+    const [certifiResult, setCertifiResult] = useState(false);
 
     const handleAnswer = (answerIndex) => {
         const newAnswers = [...selectedAnswers];
@@ -300,31 +300,45 @@ const App = () => {
     };
 
     const CertificationContainer = () => (
-        <div className="w-full max-w-md p-6 mx-auto bg-white rounded-lg shadow-xl">
-            <h2 className="mb-4 text-2xl font-bold text-gray-800 text-center">원하시는 인증 방식을 선택하세요.</h2>
-            <div className="w-full grid grid-cols-2 gap-4 ">
-                <div className="flex flex-col items-center">
-                    <p className="mb-4 text-lg font-semibold text-gray-700 text-center">카카오톡</p>
-                    <img
-                        src={`${process.env.PUBLIC_URL}/loginIcon/btn_kakao.svg`}
-                        alt="KaKao"
-                        className="ml-2 w-32 h-32"
-                    />
-                </div>
-                <div className="flex flex-col items-center">
-                    <p className="mb-4 text-lg font-semibold text-gray-700 text-cente">네이버</p>
-                    <img src={`${process.env.PUBLIC_URL}/loginIcon/btn_naver.svg`} alt="Naver" className="w-32 h-32" />
-                </div>
-                <div className="space-y-2"></div>
+        <div>
+            <div className="w-full max-w-md mx-auto pb-5 pr-2">
+                <img
+                    src={`${process.env.PUBLIC_URL}/loginIcon/DAEYEON_Logo_update.png`}
+                    alt="KaKao"
+                    className="ml-2 w-full h-auto"
+                />
             </div>
-            <div className="flex items-center justify-between">
-                <button
-                    className="flex items-center justify-center w-full px-4 py-2 text-sm text-white text-center transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
-                    onClick={loginBtn}
-                >
-                    <SocialKakao />
-                </button>
-            </div>
+
+            {/* <div className="w-full max-w-md p-6 mx-auto bg-white rounded-lg shadow-xl">
+                <h2 className="mb-4 text-2xl font-bold text-gray-800 text-center">원하시는 인증 방식을 선택하세요.</h2>
+                <div className="w-full grid grid-cols-2 gap-4 ">
+                    <div className="flex flex-col items-center">
+                        <p className="mb-4 text-lg font-semibold text-gray-700 text-center">카카오톡</p>
+                        <img
+                            src={`${process.env.PUBLIC_URL}/loginIcon/btn_kakao.svg`}
+                            alt="KaKao"
+                            className="ml-2 w-32 h-32"
+                        />
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <p className="mb-4 text-lg font-semibold text-gray-700 text-cente">네이버</p>
+                        <img
+                            src={`${process.env.PUBLIC_URL}/loginIcon/btn_naver.svg`}
+                            alt="Naver"
+                            className="w-32 h-32"
+                        />
+                    </div>
+                    <div className="space-y-2"></div>
+                </div>
+                <div className="flex items-center justify-between">
+                    <button
+                        className="flex items-center justify-center w-full px-4 py-2 text-sm text-white text-center transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
+                        onClick={loginBtn}
+                    >
+                        <SocialKakao />
+                    </button>
+                </div>
+            </div> */}
         </div>
     );
 
@@ -335,23 +349,6 @@ const App = () => {
         >
             {certifiResult ? (
                 <>
-                    {/* <h1 className="mb-6 text-3xl font-bold text-gray-800">회사이름 및 로고</h1> */}
-                    <div className="w-full max-w-md mx-auto pb-5 pr-2">
-                        <img
-                            src={`${process.env.PUBLIC_URL}/loginIcon/DAEYEON_Logo_update.png`}
-                            alt="KaKao"
-                            className="ml-2 w-full h-auto"
-                        />
-                        {/* <h1 className="mb-6 text-3xl font-bold text-gray-800">
-                            회사이름 및 로고
-                            <img
-                                src={`${process.env.PUBLIC_URL}/loginIcon/DAEYEON_Logo_update.png`}
-                                alt="KaKao"
-                                className="ml-2 w-full h-auto"
-                            />
-                        </h1> */}
-                    </div>
-
                     <CertificationContainer />
                     <button
                         className="flex items-center mt-4 text-sm text-blue-600 transition-colors duration-200 hover:text-blue-800"
@@ -367,7 +364,8 @@ const App = () => {
                 </>
             ) : (
                 <>
-                    <h1 className="mb-6 text-3xl font-bold text-gray-800">나의 노후 준비 체크</h1>
+                    <CertificationContainer />
+                    {/* <h1 className="mb-6 text-3xl font-bold text-gray-800">나의 노후 준비 체크</h1> */}
                     {showResult ? <ResultContent /> : <QuestionnaireContent />}
                     <button
                         className="flex items-center mt-4 text-sm text-blue-600 transition-colors duration-200 hover:text-blue-800"
