@@ -193,35 +193,35 @@ const App = () => {
                 "노후에 대한 기본적인 준비는 시작했지만 여전히 부족합니다. 현재까지의 자산 관리로는 장기적인 안정을 보장하기 어려울 수 있습니다. 은퇴 후에도 예상치 못한 의료비와 물가 상승률은 꾸준히 당신의 자산을 갉아먹게 될 것입니다. 당신이 10년 후에 후회하는 상황을 피하려면, 지금부터 자산 증대 전략을 강화하고 추가적인 수익 창출 방법을 고려해야 합니다. 지금 준비하지 않으면 은퇴 후에도 계속해서 일해야 할 수도 있습니다.";
             products = [allProducts[4], allProducts[1], allProducts[0]];
             finalImage = allGrandMatherImg[2].path;
-            imageRecommendation = allGrandMatherImg[0].text;
+            imageRecommendation = allGrandMatherImg[1].text;
         } else if (totalScore <= 60) {
             status = "노후의 균형";
             recommendation =
                 "당신은 어느 정도 노후를 준비했지만, 여전히 완벽한 준비는 아닙니다. 은퇴 후 20~30년 동안 안정적인 생활을 유지하려면 지금의 자산으로는 충분하지 않을 수 있습니다. 특히 의료비나 장기 요양에 대한 준비가 부족하다면 큰 재정적 부담에 직면할 수 있습니다. 은퇴 후의 경제적 안정성을 확보하기 위해서는 보다 적극적인 자산 관리와 장기적인 재무 계획이 필요합니다. 더 이상 미루지 말고, 은퇴 후에도 안락한 생활을 지속할 수 있도록 지금부터 대비하는 것이 중요합니다.";
             products = [allProducts[4], allProducts[3], allProducts[1]];
             finalImage = allGrandMatherImg[3].path;
-            imageRecommendation = allGrandMatherImg[0].text;
+            imageRecommendation = allGrandMatherImg[2].text;
         } else if (totalScore <= 70) {
             status = "노후 성장 지향적이지만 신중한 접근";
             recommendation =
                 "노후를 대비한 자산 관리가 비교적 잘 이루어졌습니다. 하지만 물가 상승, 의료비 증가, 예기치 못한 사고 등 다양한 변수는 언제든지 발생할 수 있습니다. 당신의 현재 자산이 그런 예기치 못한 상황에 충분히 대응할 수 있는지 다시 한 번 점검해볼 필요가 있습니다. 만약 지금보다 더 강력한 재정 계획을 세운다면 은퇴 후에도 재정적인 걱정 없이 더욱 여유롭게 생활할 수 있을 것입니다.";
             products = [allProducts[4], allProducts[2], allProducts[3]];
             finalImage = allGrandMatherImg[4].path;
-            imageRecommendation = allGrandMatherImg[0].text;
+            imageRecommendation = allGrandMatherImg[3].text;
         } else if (totalScore <= 80) {
             status = "노후의 성장 및 안정성 중시";
             recommendation =
                 "당신은 노후 준비를 잘 해왔고, 은퇴 후에도 안정적인 생활을 유지할 수 있는 자산을 보유하고 있습니다. 하지만 여전히 예기치 못한 변수들이 당신의 자산을 위협할 수 있음을 기억해야 합니다. 지금부터 더 효율적인 자산 운용 전략을 세우고, 부동산이나 토지와 같은 안전한 자산에 투자하여 자산을 더욱 증대시키는 것도 좋은 방법이 될 수 있습니다. 이미 잘 해오셨지만, 조금 더 적극적으로 준비한다면 당신의 은퇴 생활은 더욱 안정되고 여유로울 것입니다.";
             products = [allProducts[4], allProducts[0], allProducts[1]];
             finalImage = allGrandMatherImg[3].path;
-            imageRecommendation = allGrandMatherImg[0].text;
+            imageRecommendation = allGrandMatherImg[4].text;
         } else {
             status = "준비 완료";
             recommendation =
                 "당신은 준비를 잘 해왔습니다. 노후에도 추가적인 자산을 늘리기 위해서는 매우 적극적으로 준비하시길 권장드립니다.";
             products = [allProducts[3], allProducts[3], allProducts[3]];
             finalImage = allGrandMatherImg[1].path;
-            imageRecommendation = allGrandMatherImg[0].text;
+            imageRecommendation = allGrandMatherImg[4].text;
         }
 
         return { totalScore, status, recommendation, products, finalImage, imageRecommendation };
