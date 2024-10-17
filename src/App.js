@@ -322,7 +322,9 @@ const App = () => {
                             />
                         </>
                     ) : (
-                        <p className="bg-gray-100 p-4 rounded-md text-lg">{imageRecommendation}</p>
+                        imageRecommendation && (
+                            <p className="bg-gray-100 p-4 rounded-md text-lg">{imageRecommendation}</p>
+                        )
                     )}
                     <h3 className="mb-2 text-lg font-semibold text-gray-700 pt-10">추천 상품 Top 3</h3>
                     <div className="w-full grid grid-cols-3 gap-4">
