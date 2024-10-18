@@ -198,7 +198,8 @@ const App = () => {
     ];
 
     const calculateResult = () => {
-        const totalScore = selectedAnswers.reduce((sum, answer) => sum + (answer !== null ? answer + 1 : 0), 0);
+        // const totalScore = selectedAnswers.reduce((sum, answer) => sum + (answer !== null ? answer + 1 : 0), 0);
+        const totalScore = 60;
         let status, recommendation, products, imageTitle, finalImage, imageRecommendation;
 
         if (totalScore < 30) {
@@ -463,7 +464,8 @@ const App = () => {
                 <>
                     <CertificationContainer />
                     {/* <h1 className="mb-6 text-3xl font-bold text-gray-800">나의 노후 준비 체크</h1> */}
-                    {showResult ? <ResultContent /> : <QuestionnaireContent />}
+                    {/* {showResult ? <ResultContent /> : <QuestionnaireContent />} */}
+                    {<ResultContent />}
                     <button
                         className="flex items-center mt-4 text-sm text-blue-600 transition-colors duration-200 hover:text-blue-800"
                         onClick={() =>
