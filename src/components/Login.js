@@ -6,10 +6,10 @@ const Login = () => {
     const [certifiResult, setCertifiResult] = useState(false);
 
     const loginBtn = () => {
-        // setCertifiResult(true);
+        setCertifiResult(true);
         // 로그인 성공 시 question 페이지로 이동
-        <SocialKakao />;
-        window.location.href = "/question";
+        // <SocialKakao />;
+        // window.location.href = "/question";
     };
 
     return (
@@ -20,17 +20,28 @@ const Login = () => {
                 <div className="w-full grid grid-cols-2 gap-4 ">
                     <div className="flex flex-col items-center">
                         <p className="mb-4 text-lg font-semibold text-gray-700 text-center">카카오톡</p>
-                        <img src={`${process.env.PUBLIC_URL}/loginIcon/btn_kakao.svg`} alt="KaKao" className="ml-2 w-32 h-32" />
+                        <img
+                            src={`${process.env.PUBLIC_URL}/loginIcon/btn_kakao.svg`}
+                            alt="KaKao"
+                            className="ml-2 w-32 h-32"
+                        />
                     </div>
                     <div className="flex flex-col items-center">
                         <p className="mb-4 text-lg font-semibold text-gray-700 text-cente">네이버</p>
-                        <img src={`${process.env.PUBLIC_URL}/loginIcon/btn_naver.svg`} alt="Naver" className="w-32 h-32" />
+                        <img
+                            src={`${process.env.PUBLIC_URL}/loginIcon/btn_naver.svg`}
+                            alt="Naver"
+                            className="w-32 h-32"
+                        />
                     </div>
                     <div className="space-y-2"></div>
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="flex items-center justify-center w-full px-4 py-2 text-sm text-white text-center transition-colors duration-200 rounded-lg hover:bg-kakaoColor" onClick={loginBtn}>
-                        {/* <SocialKakao /> */}
+                    <button
+                        className="flex items-center justify-center w-full px-4 py-2 text-sm text-white text-center transition-colors duration-200 rounded-lg hover:bg-kakaoColor"
+                        onClick={loginBtn}
+                    >
+                        <SocialKakao />
                     </button>
                 </div>
             </div>
