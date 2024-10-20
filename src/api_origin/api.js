@@ -1,7 +1,7 @@
 import KakaoLogin from "react-kakao-login";
 
 export const SocialKakao = () => {
-    const Rest_api_key = ""; //REST API KEY
+    const Rest_api_key = "2c96481d59a235c57305c9a61b026480"; //REST API KEY
     const redirect_uri = "http://localhost.com:3000/auth/kyusan"; //Redirect URI
     // const redirect_uri = "http://localhost.com:3000/questionnaire"; //Redirect URI
 
@@ -13,7 +13,9 @@ export const SocialKakao = () => {
     };
     return (
         <>
-            <button onClick={handleLogin}>카카오 로그인</button>
+            {/* <button onClick={handleLogin}>카카오 로그인</button> */}
+            <KakaoLogin />
+            {/* <KakaoLogin token={kakaoClientId} onSuccess={kakaoOnSuccess} onFail={kakaoOnFailure} /> */}
         </>
     );
 };
@@ -35,4 +37,4 @@ export default SocialKakao;
 //     );
 // };
 
-// // export default SocialKakao;
+// export default SocialKakao;
