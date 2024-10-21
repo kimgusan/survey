@@ -42,7 +42,7 @@
             "last 1 safari version"
         ]
     },
-    "homepage": "https://kimgusan.github.io/",
+    "homepage": "https://kimgusan.github.io/question/",
     "devDependencies": {
         "autoprefixer": "^10.4.20",
         "postcss": "^8.4.47",
