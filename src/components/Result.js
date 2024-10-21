@@ -200,6 +200,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                             alt={allGrandMatherImg[4].name}
                             className="w-auto h-auto"
                             loading="lazy"
+                            decoding="async"
                         />
                         {imageRecommendation && (
                             <p className="bg-gray-100 p-4 rounded-md text-lg mt-5">{imageRecommendation}</p>
@@ -226,6 +227,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                                         alt={product.name}
                                         className="w-full h-auto"
                                         loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                             ))}
