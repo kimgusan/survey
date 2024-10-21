@@ -37,7 +37,6 @@ const SubmitSummary = () => {
                 const result = await response.json();
 
                 if (result.access_token) {
-                    localStorage.setItem("access_token", result.access_token);
                     // 사용자 정보 요청 함수 호출 가능
                     await fetchUserInfo(result.access_token);
                 }
@@ -58,7 +57,6 @@ const SubmitSummary = () => {
 
                 const userData = await response.json();
                 setUserInfo(userData);
-                localStorage.removeItem("access_token");
             } catch (error) {
                 console.error("Error fetching user info:", error);
             }
