@@ -19,6 +19,9 @@ const SubmitSummary = () => {
                 return; // 인증 코드가 없으면 함수 종료
             }
 
+            search.delete("code");
+            window.history.replaceState(null, "", `${window.location.pathname}${search}`);
+
             // 인증 코드로 액세스 토큰 요청
             try {
                 const response = await fetch("https://kauth.kakao.com/oauth/token", {
