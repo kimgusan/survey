@@ -8,6 +8,7 @@ import Layout from "./components/Layout"; // 공통 레이아웃 컴포넌트
 import SubmitSummary from "./components/SubmitSummary";
 import { useState } from "react";
 import { UserProvider } from "./api/userContext";
+import { BrowserRouter } from "react-router-dom";
 
 const questions = [
     {
@@ -140,7 +141,7 @@ const App = () => {
                         {/* 차후 로그인 진행 시 해당 내용 변경 */}
                         {/* <Route path="/" element={<Navigate to="/login" />} /> */}
                         {/* <Route path="/login" element={<Login />} /> Login 경로 추가 */}
-                        <Route path="/" element={<Navigate to="/question" />} />
+                        <Route path="/survey" element={<Navigate to="/question" />} />
                         <Route path="/submitsummary" element={<SubmitSummary />} />
                         <Route path="/question" element={<Question {...props} />} />
                         <Route path="/result" element={<Result {...props} />} />
