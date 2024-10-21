@@ -6,10 +6,14 @@ const Login = () => {
     const [certifiResult, setCertifiResult] = useState(false);
 
     const loginBtn = () => {
-        setCertifiResult(true);
-        // 로그인 성공 시 question 페이지로 이동
-        // <SocialKakao />;
+        <SocialKakao />;
+        // setCertifiResult(true);
         // window.location.href = "/question";
+        const client_id = "2c96481d59a235c57305c9a61b026480";
+        const redirect_uri = "http://127.0.0.1:3000/question/";
+
+        const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code`;
+        window.location.href = kakaoURL; // 카카오 로그인 페이지로 리다이렉트
     };
 
     return (
@@ -37,11 +41,13 @@ const Login = () => {
                     <div className="space-y-2"></div>
                 </div>
                 <div className="flex items-center justify-between">
+                    {/* <SocialKakao /> */}
                     <button
-                        className="flex items-center justify-center w-full px-4 py-2 text-sm text-white text-center transition-colors duration-200 rounded-lg hover:bg-kakaoColor"
+                        className="flex items-center justify-center w-full px-4 py-2 text-sm text-center transition-colors duration-200 rounded-lg"
                         onClick={loginBtn}
                     >
-                        <SocialKakao />
+                        로그인
+                        {/* <SocialKakao /> */}
                     </button>
                 </div>
             </div>
