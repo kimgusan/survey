@@ -31,8 +31,9 @@ const Question = ({
         <>
             <CertificationContainer />
             <div className="w-full max-w-2xl p-6 mx-auto bg-white rounded-lg shadow-xl">
-                <h2 className="mb-4 text-2xl font-bold text-gray-800">{questions[currentQuestion].question}</h2>
+                <h2 className="mb-4 text-2xl font-bold text-gray-800">노후 준비 질문지</h2>
                 <div className="mb-6">
+                    <p className="mb-4 text-lg font-semibold text-gray-700">{questions[currentQuestion].question}</p>
                     <div className="space-y-2">
                         {questions[currentQuestion].answers.map((answer, index) => (
                             <button

@@ -6,7 +6,7 @@ import { handleSaveToSheet } from "../api/postGoogleSheet";
 
 const allProducts = [
     {
-        name: "금(Gold)투자", // KRX
+        name: "금 투자", // KRX
         path: `${process.env.PUBLIC_URL}/recommendIcon/금.png`,
     },
     {
@@ -170,16 +170,24 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
     }, [resultImage]);
 
     return (
-        <div className="w-full max-w-2xl p-6 mx-auto bg-white rounded-lg shadow-xl">
+        <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl">
             <h2 className="mb-4 text-2xl font-bold text-gray-800">
                 {userInfo?.properties?.nickname
                     ? `${userInfo.properties.nickname}님의 노후 준비 결과`
                     : "노후 준비 결과"}
             </h2>
             <div className="p-4 mb-4 bg-blue-100 rounded-lg">
-                <p className="text-lg font-semibold text-blue-800">
-                    총점: {totalScore} / {questions.length * 4}
-                </p>
+                <div className="flex justify-between items-center">
+                    <p className="text-lg font-semibold text-blue-800">
+                        총점: {totalScore} / {questions.length * 4}
+                    </p>
+                    <button
+                        className="text-lg font-semibold text-blue-800 hover:shadow-lg transition-shadow duration-300 rounded-lg "
+                        onClick={imageClick}
+                    >
+                        추천상품 Top 3
+                    </button>
+                </div>
                 <p className="text-lg font-semibold text-blue-800">노후 준비 상태: {status}</p>
             </div>
             <div className="mb-6">
@@ -198,14 +206,20 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                     </>
                 ) : (
                     <>
-                        <p className="mb-4 text-base text-gray-700">{recommendation}</p>
-                        <h3 className="mb-2 text-lg font-semibold text-gray-700 pt-5">추천 상품 Top 3</h3>
-                        <div className="w-full grid grid-cols-3 gap-4">
+                        <p className="mb-4 text-base text-gray-700 pb-3">{recommendation}</p>
+                        <hr className="border-t border-gray-300 my-4 pb-3" />
+                        <h3 className="mb-2 text-xl font-bold text-center text-gray-700 pb-3">추천 상품 Top 3</h3>
+                        <div className="w-full grid grid-cols-3 gap-4 ">
                             {products.map((product, index) => (
-                                <div key={index} className="bg-gray-100 p-4 flex flex-col items-center">
-                                    <p className="mb-4">
-                                        {index + 1}. {product.name}
-                                    </p>
+                                <p key={index} className="flex flex-col items-center font-semibold ">
+                                    {index + 1}. {product.name}
+                                </p>
+                            ))}
+                            {products.map((product, index) => (
+                                <div
+                                    key={index}
+                                    className=" flex flex-col items-center border border-gray-300 rounded-lg"
+                                >
                                     <img src={product.path} alt={product.name} className="w-full h-auto" />
                                 </div>
                             ))}
