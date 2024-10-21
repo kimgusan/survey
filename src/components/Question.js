@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import CertificationContainer from "./CertificationContainer";
 
-const Question = ({ currentQuestion, setCurrentQuestion, selectedAnswers, setSelectedAnswers, handlePrevious, questions }) => {
-    // const [currentQuestion, setCurrentQuestion] = useState(0);
-    // const [selectedAnswers, setSelectedAnswers] = useState(Array(questions.length).fill(null));
+const Question = ({
+    currentQuestion,
+    setCurrentQuestion,
+    selectedAnswers,
+    setSelectedAnswers,
+    handlePrevious,
+    questions,
+}) => {
     const navigate = useNavigate();
-
-    // const handleAnswer = (answerIndex) => {
-    //     const newAnswers = [...selectedAnswers];
-    //     newAnswers[currentQuestion] = answerIndex;
-    //     setSelectedAnswers(newAnswers);
-    // };
 
     const handleNext = () => {
         if (currentQuestion < questions.length - 1) {
@@ -21,12 +20,6 @@ const Question = ({ currentQuestion, setCurrentQuestion, selectedAnswers, setSel
             navigate("/result");
         }
     };
-
-    // const handlePrevious = () => {
-    //     if (currentQuestion > 0) {
-    //         setCurrentQuestion(currentQuestion - 1);
-    //     }
-    // };
 
     const handleAnswer = (answerIndex) => {
         const newAnswers = [...selectedAnswers];
@@ -42,18 +35,34 @@ const Question = ({ currentQuestion, setCurrentQuestion, selectedAnswers, setSel
                 <div className="mb-6">
                     <div className="space-y-2">
                         {questions[currentQuestion].answers.map((answer, index) => (
-                            <button key={index} className={`block w-full text-left p-3 rounded-lg text-base transition-colors duration-200 ${selectedAnswers[currentQuestion] === index ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-800 hover:bg-gray-200"}`} onClick={() => handleAnswer(index)}>
+                            <button
+                                key={index}
+                                className={`block w-full text-left p-3 rounded-lg text-base transition-colors duration-200 ${
+                                    selectedAnswers[currentQuestion] === index
+                                        ? "bg-blue-500 text-white"
+                                        : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                                }`}
+                                onClick={() => handleAnswer(index)}
+                            >
                                 {answer}
                             </button>
                         ))}
                     </div>
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="flex items-center px-4 py-2 text-sm text-gray-700 transition-colors duration-200 bg-gray-200 rounded-lg hover:bg-gray-300" onClick={handlePrevious} disabled={currentQuestion === 0}>
+                    <button
+                        className="flex items-center px-4 py-2 text-sm text-gray-700 transition-colors duration-200 bg-gray-200 rounded-lg hover:bg-gray-300"
+                        onClick={handlePrevious}
+                        disabled={currentQuestion === 0}
+                    >
                         <ArrowLeft className="mr-1" size={16} />
                         이전
                     </button>
-                    <button className="flex items-center px-4 py-2 text-sm text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600" onClick={handleNext} disabled={selectedAnswers[currentQuestion] === null}>
+                    <button
+                        className="flex items-center px-4 py-2 text-sm text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
+                        onClick={handleNext}
+                        disabled={selectedAnswers[currentQuestion] === null}
+                    >
                         {currentQuestion === questions.length - 1 ? "결과 보기" : "다음"}
                         <ArrowRight className="ml-1" size={16} />
                     </button>

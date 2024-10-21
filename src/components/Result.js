@@ -1,8 +1,8 @@
 // Result.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../api/userContext";
 
-// allProducts와 allGrandMatherImg를 Result.js에서 직접 정의하거나, 별도의 파일에서 import합니다.
 const allProducts = [
     {
         name: "금(Gold)투자", // KRX
@@ -67,6 +67,8 @@ const allGrandMatherImg = [
 ];
 
 const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelectedAnswers, questions }) => {
+    const { userInfo } = useContext(UserContext);
+
     const navigate = useNavigate();
 
     const calculateResult = () => {
@@ -123,7 +125,8 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
             imageRecommendation = allGrandMatherImg[4].text;
         } else {
             status = "준비 완료";
-            recommendation = "당신은 준비를 잘 해왔습니다. 노후에도 추가적인 자산을 늘리기 위해서는 매우 적극적으로 준비하시길 권장드립니다.";
+            recommendation =
+                "당신은 준비를 잘 해왔습니다. 노후에도 추가적인 자산을 늘리기 위해서는 매우 적극적으로 준비하시길 권장드립니다.";
             products = [allProducts[4], allProducts[3], allProducts[2]];
             imageTitle = allGrandMatherImg[4].name;
             finalImage = allGrandMatherImg[4].path;
@@ -133,8 +136,16 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
         return { totalScore, status, recommendation, products, imageTitle, finalImage, imageRecommendation };
     };
 
-    const { totalScore, status, recommendation, products, imageTitle, imageRecommendation, finalImage: resultImage } = calculateResult();
-    const [finalImage, setFinalImage] = useState(true);
+    const {
+        totalScore,
+        status,
+        recommendation,
+        products,
+        imageTitle,
+        imageRecommendation,
+        finalImage: resultImage,
+    } = calculateResult();
+    const [finalImage, setFinalImage] = useState("");
 
     const restartQuiz = () => {
         setShowResult(false);
@@ -154,7 +165,11 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
 
     return (
         <div className="w-full max-w-2xl p-6 mx-auto bg-white rounded-lg shadow-xl">
-            <h2 className="mb-4 text-2xl font-bold text-gray-800">노후 준비 결과</h2>
+            <h2 className="mb-4 text-2xl font-bold text-gray-800">
+                {userInfo?.properties?.nickname
+                    ? `${userInfo.properties.nickname}님의 노후 준비 결과`
+                    : "노후 준비 결과"}
+            </h2>
             <div className="p-4 mb-4 bg-blue-100 rounded-lg">
                 <p className="text-lg font-semibold text-blue-800">
                     총점: {totalScore} / {questions.length * 4}
@@ -165,8 +180,15 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                 {imageTitle && <h1 className="mb-4 font-normal text-2xl">{imageTitle}</h1>}
                 {finalImage ? (
                     <>
-                        <img onClick={imageClick} src={finalImage} alt={allGrandMatherImg[4].name} className="w-auto h-auto" />
-                        {imageRecommendation && <p className="bg-gray-100 p-4 rounded-md text-lg mt-5">{imageRecommendation}</p>}
+                        <img
+                            onClick={imageClick}
+                            src={finalImage}
+                            alt={allGrandMatherImg[4].name}
+                            className="w-auto h-auto"
+                        />
+                        {imageRecommendation && (
+                            <p className="bg-gray-100 p-4 rounded-md text-lg mt-5">{imageRecommendation}</p>
+                        )}
                     </>
                 ) : (
                     <>
@@ -185,7 +207,10 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                     </>
                 )}
             </div>
-            <button className="w-full px-4 py-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600" onClick={restartQuiz}>
+            <button
+                className="w-full px-4 py-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
+                onClick={restartQuiz}
+            >
                 다시 시작
             </button>
         </div>

@@ -5,7 +5,9 @@ import Login from "./components/Login";
 import Question from "./components/Question";
 import Result from "./components/Result";
 import Layout from "./components/Layout"; // 공통 레이아웃 컴포넌트
+import SubmitSummary from "./components/SubmitSummary";
 import { useState } from "react";
+import { UserProvider } from "./api/userContext";
 
 const questions = [
     {
@@ -18,7 +20,12 @@ const questions = [
     },
     {
         question: "3. 은퇴 후 건강 관리를 위해 어떤 준비를 하고 계신가요?",
-        answers: ["특별한 준비 없음", "정기 건강 검진만 계획 중", "건강 보험 강화 및 운동 계획 수립", "종합적인 건강관리 계획 및 수립 및 실행 중"],
+        answers: [
+            "특별한 준비 없음",
+            "정기 건강 검진만 계획 중",
+            "건강 보험 강화 및 운동 계획 수립",
+            "종합적인 건강관리 계획 및 수립 및 실행 중",
+        ],
     },
     {
         question: "4. 은퇴 후 필요한 의료비를 얼마나 대비하고 계신가요?",
@@ -30,7 +37,12 @@ const questions = [
     },
     {
         question: "6. 귀하의 은퇴 후 주거 계획은 무엇입니까?",
-        answers: ["현재 거주 중인 집에서 계속 살 예정", "자녀나 친척과 함께 살 계획", "실버타운이나 은퇴 커뮤니티로 이주 예정", "도심의 편의시설이 갖춰진 곳으로 이사할 계획"],
+        answers: [
+            "현재 거주 중인 집에서 계속 살 예정",
+            "자녀나 친척과 함께 살 계획",
+            "실버타운이나 은퇴 커뮤니티로 이주 예정",
+            "도심의 편의시설이 갖춰진 곳으로 이사할 계획",
+        ],
     },
     {
         question: "7. 현재 자산의 일부를 은퇴 후 매각할 계획이 있나요?",
@@ -58,7 +70,12 @@ const questions = [
     },
     {
         question: "13. 토지 투자를 한다면 가장 중요하게 판단해야 할 요소는 무엇인가요?",
-        answers: ["접도 현황 및 진출입로 확보 가능성", "교통 결절점 근접성 및 연계성", "지가 상승 잠재력 및 수익률 전망", "용도지역 현황 및 도시계획 방향성"],
+        answers: [
+            "접도 현황 및 진출입로 확보 가능성",
+            "교통 결절점 근접성 및 연계성",
+            "지가 상승 잠재력 및 수익률 전망",
+            "용도지역 현황 및 도시계획 방향성",
+        ],
     },
     {
         question: "14. 개발지 주변의 토지들의 투자 금액은 얼마라고 생각하시나요?",
@@ -96,16 +113,7 @@ const App = () => {
     const [selectedAnswers, setSelectedAnswers] = useState(Array(20).fill(null)); // 20은 총 질문 수를 의미
     const [showResult, setShowResult] = useState(false);
 
-    // 다음/이전 버튼 핸들러
-    // const handleNext = () => {
-    //     if (currentQuestion < 19) {
-    //         // 총 질문 수 - 1
-    //         setCurrentQuestion(currentQuestion + 1);
-    //     } else {
-    //         setShowResult(true);
-    //     }
-    // };
-
+    // 결과 프로퍼티에서도 해당 이전 기능이 있기 때문에 App에서 관리
     const handlePrevious = () => {
         if (currentQuestion > 0) {
             setCurrentQuestion(currentQuestion - 1);
@@ -124,18 +132,20 @@ const App = () => {
     };
 
     return (
-        <Router>
-            <Routes>
-                {/* <Route path="/" element={<Navigate to="/Login" />} /> */}
-                <Route element={<Layout />}>
-                    {/* Layout 컴포넌트에 공통 스타일 적용 */}
-                    <Route path="/login" element={<Login />} /> {/* Login 경로 추가 */}
-                    <Route path="/" element={<Navigate to="/question" />} />
-                    <Route path="/question" element={<Question {...props} />} />
-                    <Route path="/result" element={<Result {...props} />} />
-                </Route>
-            </Routes>
-        </Router>
+        <UserProvider>
+            <Router>
+                <Routes>
+                    <Route element={<Layout />}>
+                        {/* Layout 컴포넌트에 공통 스타일 적용 */}
+                        <Route path="/" element={<Navigate to="/login" />} />
+                        <Route path="/login" element={<Login />} /> {/* Login 경로 추가 */}
+                        <Route path="/submitsummary" element={<SubmitSummary />} />
+                        <Route path="/question" element={<Question {...props} />} />
+                        <Route path="/result" element={<Result {...props} />} />
+                    </Route>
+                </Routes>
+            </Router>
+        </UserProvider>
     );
 };
 
