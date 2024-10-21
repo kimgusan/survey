@@ -199,6 +199,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                             src={finalImage}
                             alt={allGrandMatherImg[4].name}
                             className="w-auto h-auto"
+                            loading="lazy"
                         />
                         {imageRecommendation && (
                             <p className="bg-gray-100 p-4 rounded-md text-lg mt-5">{imageRecommendation}</p>
@@ -220,7 +221,12 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                                     key={index}
                                     className=" flex flex-col items-center border border-gray-300 rounded-lg"
                                 >
-                                    <img src={product.path} alt={product.name} className="w-full h-auto" />
+                                    <img
+                                        src={product.path}
+                                        alt={product.name}
+                                        className="w-full h-auto"
+                                        loading="lazy"
+                                    />
                                 </div>
                             ))}
                         </div>
