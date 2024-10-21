@@ -170,7 +170,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
     }, [resultImage]);
 
     return (
-        <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl">
+        <div className="w-full max-w-5xl p-6 mx-auto bg-white rounded-lg shadow-xl">
             <h2 className="mb-4 text-2xl font-bold text-gray-800">
                 {userInfo?.properties?.nickname
                     ? `${userInfo.properties.nickname}님의 노후 준비 결과`
