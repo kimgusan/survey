@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../api/userContext";
+import { handleSaveToSheet } from "../api/postGoogleSheet";
 
 const allProducts = [
     {
@@ -67,9 +68,14 @@ const allGrandMatherImg = [
 ];
 
 const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelectedAnswers, questions }) => {
+    const navigate = useNavigate();
     const { userInfo } = useContext(UserContext);
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        if (userInfo) {
+            handleSaveToSheet(userInfo);
+        }
+    }, [userInfo]);
 
     const calculateResult = () => {
         const totalScore = selectedAnswers.reduce((sum, answer) => sum + (answer !== null ? answer + 1 : 0), 0);

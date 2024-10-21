@@ -76,12 +76,15 @@ const SubmitSummary = () => {
         <div>
             <CertificationContainer />
             <div className="w-full max-w-2xl p-6 mx-auto bg-white rounded-lg shadow-xl">
-                <h2 className="mb-4 text-2xl font-bold text-gray-800">대영 설문조사에 대한 간간한 타이틀</h2>
-                <div className="mb-6">
+                <h2 className="text-2xl font-bold text-gray-800 text-center">재무 상태 분석 설문조사</h2>
+                <div className="mb-6 max-w-md mx-auto">
                     <p className="bg-gray-100 p-4 rounded-md text-lg mt-5">
-                        해당 설문조사는 노후 관리에 대한 설문조사이며,
+                        이 설문조사는 개인의 현재 재무 상태를 분석하여 각 고객에 맞춰 최적의 재테크 방법을 제안하기 위해
+                        마련되었습니다.
                         <br />
-                        필요에 의해 사용자 정보가 사용될 수 있습니다.
+                        <br />
+                        제공하신 정보는 엄격한 비밀 유지 하에 처리되며,
+                        <br /> 설문 결과를 개선하고 고객님께 맞춤형 서비스를 제공하는 목적으로만 사용됩니다.
                     </p>
                 </div>
                 <button
