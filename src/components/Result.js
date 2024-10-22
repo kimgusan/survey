@@ -7,30 +7,30 @@ import { handleSaveToSheet } from "../api/postGoogleSheet";
 const allProducts = [
     {
         name: "금 투자", // KRX
-        path: `${process.env.PUBLIC_URL}/recommendIcon/금.png`,
+        path: `${process.env.PUBLIC_URL}/recommendIcon/금.webp`,
     },
     {
         name: "예금/적금", // 예적금
-        path: `${process.env.PUBLIC_URL}/recommendIcon/예금.png`,
+        path: `${process.env.PUBLIC_URL}/recommendIcon/예금.webp`,
     },
     {
         name: "비트코인", // 비트코인
-        path: `${process.env.PUBLIC_URL}/recommendIcon/코인.png`,
+        path: `${process.env.PUBLIC_URL}/recommendIcon/코인.webp`,
     },
     {
         name: "주식", //주식
-        path: `${process.env.PUBLIC_URL}/recommendIcon/주식.png`,
+        path: `${process.env.PUBLIC_URL}/recommendIcon/주식.webp`,
     },
     {
         name: "개발예정지", // 개발예정지
-        path: `${process.env.PUBLIC_URL}/recommendIcon/토지.png`,
+        path: `${process.env.PUBLIC_URL}/recommendIcon/토지.webp`,
     },
 ];
 
 const allGrandMatherImg = [
     {
         name: "",
-        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(30_40).png`,
+        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(30_40).webp`,
         text: `안녕하세요, 저는 이 시장 골목에서 오랜 세월을 보내왔어요. 젊었을 때는 열심히 일하고, 가정을 꾸리며 바쁜 날들을 보냈지만, 솔직히 말하면 노후 준비를 제대로 하지 못한 탓에 지금은 이렇게 작은 자리에서 하루를 보내고 있답니다.
 
 젊었을 때는 앞만 보고 살았어요. 아이들 키우고 생활비를 버느라 노후를 대비할 여유가 없었거든요. 그때는 그게 당연한 줄 알았죠. 하루하루가 바빠서 미래를 생각할 겨를도 없었어요. 하지만 시간이 지나면서, 준비되지 않은 노후가 얼마나 큰 걱정으로 다가오는지 깨달았답니다. 지금은 큰 수입 없이 살아가고 있고, 그래서 시장 골목에 나와 사람들이 오가는 걸 보며 시간을 보내곤 해요.
@@ -41,7 +41,7 @@ const allGrandMatherImg = [
     },
     {
         name: "",
-        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(40_50).png`,
+        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(40_50).webp`,
         text: `안녕하세요, 저는 이 시장 골목에서 오랜 세월을 보내왔어요. 젊었을 때는 열심히 일하고, 가정을 꾸리며 바쁜 날들을 보냈지만, 솔직히 말하면 노후 준비를 제대로 하지 못한 탓에 지금은 이렇게 작은 자리에서 하루를 보내고 있답니다.
 
 젊었을 때는 앞만 보고 살았어요. 아이들 키우고 생활비를 버느라 노후를 대비할 여유가 없었거든요. 그때는 그게 당연한 줄 알았죠. 하루하루가 바빠서 미래를 생각할 겨를도 없었어요. 하지만 시간이 지나면서, 준비되지 않은 노후가 얼마나 큰 걱정으로 다가오는지 깨달았답니다. 지금은 큰 수입 없이 살아가고 있고, 그래서 시장 골목에 나와 사람들이 오가는 걸 보며 시간을 보내곤 해요.
@@ -52,17 +52,17 @@ const allGrandMatherImg = [
     },
     {
         name: "할머니의 사랑의 선물: 세대를 잇는 명품 가방",
-        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(50_60).png`,
+        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(50_60).webp`,
         text: "",
     },
     {
         name: "황금빛 노후: 할머니의 화려한 슈퍼카와 인생 2막",
-        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(60_70).png`,
+        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(60_70).webp`,
         text: "",
     },
     {
         name: "황금씨앗: 할머니가 심는 미래의 땅",
-        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(80).png`,
+        path: `${process.env.PUBLIC_URL}/Image/ScoreMother(80).webp`,
         text: "",
     },
 ];
@@ -199,7 +199,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                             src={finalImage}
                             alt={allGrandMatherImg[4].name}
                             className="w-auto h-auto"
-                            loading="lazy"
+                            loading="eager"
                             decoding="async"
                         />
                         {imageRecommendation && (
@@ -226,7 +226,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                                         src={product.path}
                                         alt={product.name}
                                         className="w-full h-auto"
-                                        loading="lazy"
+                                        loading="eager"
                                         decoding="async"
                                     />
                                 </div>
