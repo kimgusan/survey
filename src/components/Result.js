@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../api/userContext";
 import { handleSaveToSheet } from "../api/postGoogleSheet";
+import { MousePointer2, SquareMousePointer } from "lucide-react";
 
 const allProducts = [
     {
@@ -181,12 +182,12 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
                     <p className="text-lg font-semibold text-blue-800">
                         총점: {totalScore} / {questions.length * 4}
                     </p>
-                    <button
-                        className="text-lg font-semibold text-blue-800 hover:shadow-lg transition-shadow duration-300 rounded-lg "
-                        onClick={imageClick}
-                    >
-                        추천상품 Top 3
-                    </button>
+                    <div className="flex bg-blue-300 p-2 hover:shadow-lg  transition-shadow duration-300 rounded-lg">
+                        <button className="text-lg font-semibold text-blue-800 mr-1" onClick={imageClick}>
+                            추천상품 Top 3
+                        </button>
+                        <SquareMousePointer style={{ width: "22px", height: "22px", color: "#172A9F" }} />
+                    </div>
                 </div>
                 <p className="text-lg font-semibold text-blue-800">노후 준비 상태: {status}</p>
             </div>
