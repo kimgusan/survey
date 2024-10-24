@@ -158,7 +158,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
         setShowResult(false);
         setCurrentQuestion(0);
         setSelectedAnswers(Array(questions.length).fill(null));
-        navigate("/survey");
+        navigate("/");
     };
 
     const imageClick = () => {
