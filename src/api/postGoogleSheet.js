@@ -1,7 +1,7 @@
 // // 설문조사 회원 정보를 구글 시트로 전송하는 api
 
 export const handleSaveToSheet = async (userInfo) => {
-    console.log(userInfo);
+    // console.log(userInfo);
     if (userInfo && userInfo.kakao_account) {
         const { kakao_account } = userInfo;
         const name = kakao_account.name || "";
