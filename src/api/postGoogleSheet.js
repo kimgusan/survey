@@ -24,6 +24,7 @@ export const handleSaveToSheet = async (userInfo, setUserInfo) => {
     } else if (userInfo && userInfo.email) {
         const email = userInfo.email;
         dataToSubmit.append("이메일", email);
+        dataToSubmit.append("핸드폰", "");
     }
     try {
         const response = await fetch(url, {

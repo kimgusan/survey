@@ -137,7 +137,6 @@ const SubmitSummary = () => {
                     Authorization: `Bearer ${access_token}`,
                 },
             });
-            console.log("Kakao logout successfule");
         } catch (error) {
             console.error("Error logging out from Kakao:", error);
         }
@@ -150,17 +149,46 @@ const SubmitSummary = () => {
     return (
         <div>
             <CertificationContainer />
-            <div className="w-full max-w-2xl p-6 mx-auto bg-white rounded-lg shadow-xl">
-                <h2 className="text-2xl font-bold text-gray-800 text-center">재무 상태 분석 설문조사</h2>
-                <div className="mb-6 max-w-md mx-auto">
-                    <p className="bg-gray-100 p-4 rounded-md text-lg mt-5">
-                        이 설문조사는 개인의 현재 재무 상태를 분석하여 각 고객에 맞춰 최적의 재테크 방법을 제안하기 위해
-                        마련되었습니다.
+            <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl">
+                <h2 className="text-2xl font-bold text-gray-800 text-center">
+                    - 재무 상태 분석 설문조사 이용정보 동의서 -
+                </h2>
+                <div className="mb-6 max-w-full mx-auto">
+                    <div className="bg-gray-100 p-4 rounded-md text-lg mt-5">
+                        본 서비스는 <strong>개인정보 보호법</strong> 및 관련 법령에 따라 고객님의 소중한 개인정보를
+                        보호하며, 다음의 목적을 위해 개인정보를 수집 및 이용합니다:
                         <br />
                         <br />
-                        제공하신 정보는 엄격한 비밀 유지 하에 처리되며,
-                        <br /> 설문 결과를 개선하고 고객님께 맞춤형 서비스를 제공하는 목적으로만 사용됩니다.
-                    </p>
+                        <ul className="list-disc list-inside">
+                            <li>회원가입 및 서비스 이용자 식별</li>
+                            <li>서비스 제공 및 맞춤형 서비스 제공</li>
+                            <li>고객 상담 및 서비스 관련 공지사항 전달</li>
+                            <li>서비스 개선 및 분석을 위한 통계 자료 생성</li>
+                            <li>부정 이용 방지 및 법적 분쟁 대응</li>
+                        </ul>
+                        <br />
+                        <strong>수집하는 개인정보 항목</strong>
+                        <br />
+                        필수 항목: 이름, 이메일 주소, 휴대폰 번호, 생년월일, 성별, 로그인 정보
+                        <br />
+                        선택 항목: 주소, 결제 정보(카드 번호, 계좌 정보 등), 프로필 사진
+                        <br />
+                        <br />
+                        제공하신 정보는 원칙적으로 <strong>개인정보 수집 및 이용 목적</strong>이 달성된 후 지체 없이
+                        파기됩니다. 단, 관련 법령에 따라 계약 관련 기록은 5년, 소비자 분쟁 기록은 3년간 보관됩니다.
+                        <br />
+                        <br />
+                        회사는 이용자의 동의 없이는 개인정보를 <strong>제3자에게 제공하지 않으며</strong>, 필요한 경우
+                        고객님의 동의를 받아 외부에 개인정보 처리 업무를 위탁할 수 있습니다.
+                        <br />
+                        <br />
+                        <strong>개인정보는 보유 기간이 경과하거나 처리 목적이 달성되면 지체 없이 안전하게 파기</strong>
+                        됩니다.
+                        <br />
+                        <br />
+                        이용자는 개인정보의 열람, 수정, 삭제, 처리 정지 요구를 할 수 있으며, 동의하지 않을 권리가
+                        있습니다. 단, 필수 항목에 대한 동의를 거부하실 경우 서비스 이용에 제한이 있을 수 있습니다.
+                    </div>
                 </div>
                 <button
                     className="w-full px-4 py-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"

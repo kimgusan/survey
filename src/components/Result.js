@@ -74,7 +74,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
 
     useEffect(() => {
         if (userInfo) {
-            handleSaveToSheet(userInfo);
+            handleSaveToSheet(userInfo, setUserInfo);
         }
     }, [userInfo]);
 
