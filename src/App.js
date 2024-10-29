@@ -134,18 +134,12 @@ const App = () => {
     return (
         <UserProvider>
             <BrowserRouter basename={`${process.env.PUBLIC_URL}`}>
-                {/* <BrowserRouter> */}
                 <Routes>
                     <Route element={<Layout />}>
-                        {/* Layout 컴포넌트에 공통 스타일 적용 */}
-                        {/* 차후 로그인 진행 시 해당 내용 변경 */}
                         <Route path="/" element={<Navigate to="/login" />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/submitsummary" element={<SubmitSummary />} />
-                        {/* <Route path="/survey" element={<Navigate to="/question" />} /> */}
                         <Route path="/question" element={<Question {...props} />} />
-                        {/* <Route path="/survey" element={<Question {...props} />} /> */}
-                        {/* <Route path="/" element={<Question {...props} />} /> */}
                         <Route path="/result" element={<Result {...props} />} />
                     </Route>
                 </Routes>

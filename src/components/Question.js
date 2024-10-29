@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import CertificationContainer from "./CertificationContainer";
+import { UserContext } from "../api/userContext";
+import { useContext } from "react";
 
 const Question = ({
     currentQuestion,
@@ -26,7 +28,6 @@ const Question = ({
         newAnswers[currentQuestion] = answerIndex;
         setSelectedAnswers(newAnswers);
     };
-
     return (
         <>
             <CertificationContainer />

@@ -1,6 +1,7 @@
 import React from "react";
 import CertificationContainer from "./CertificationContainer";
 import SocialKakao from "../api/kakaoLoginApi";
+import SocialGoogle from "../api/googleLoginApi";
 
 const Login = () => {
     return (
@@ -8,7 +9,10 @@ const Login = () => {
             <CertificationContainer />
             <div className="w-full max-w-md p-6 mx-auto bg-white rounded-lg shadow-xl">
                 <h2 className="mb-4 text-2xl font-bold text-gray-800 text-center">로그인 방식을 선택하세요.</h2>
-                <SocialKakao />
+                <div className="flex">
+                    <SocialKakao />
+                    <SocialGoogle />
+                </div>
             </div>
         </div>
     );

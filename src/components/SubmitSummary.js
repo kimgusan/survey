@@ -3,8 +3,11 @@ import CertificationContainer from "./CertificationContainer";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../api/userContext";
 
-const client_id = process.env.REACT_APP_KAKAO_CLIENT_ID;
-const redirect_uri = process.env.REACT_APP_KAKAO_REDIRECT_URI;
+const kakaoClientId = process.env.REACT_APP_KAKAO_CLIENT_ID;
+const kakaoRedirectUri = process.env.REACT_APP_KAKAO_REDIRECT_URI;
+const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const googleRedirectUri = process.env.REACT_APP_GOOGLE_REDIRECT_URI;
+const googleClientSecretKey = process.env.REACT_APP_GOOGLE_CLIENT_SECRET_KEY;
 
 const SubmitSummary = () => {
     const { setUserInfo } = useContext(UserContext);
@@ -14,59 +17,131 @@ const SubmitSummary = () => {
         const handleGetToken = async () => {
             const search = new URLSearchParams(window.location.search);
             const code = search.get("code");
-
-            if (!code) {
+            const state = search.get("state");
+            if (!code || !state) {
                 return; // 인증 코드가 없으면 함수 종료
             }
 
             search.delete("code");
+            search.delete("state");
             window.history.replaceState(null, "", `${window.location.pathname}${search}`);
 
-            // 인증 코드로 액세스 토큰 요청
-            try {
-                const response = await fetch("https://kauth.kakao.com/oauth/token", {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-                    },
-                    body: new URLSearchParams({
-                        grant_type: "authorization_code",
-                        client_id: client_id,
-                        redirect_uri: redirect_uri,
-                        code: code,
-                    }).toString(),
-                });
+            if (state === "kakao") {
+                try {
+                    const response = await fetch("https://kauth.kakao.com/oauth/token", {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+                        },
+                        body: new URLSearchParams({
+                            grant_type: "authorization_code",
+                            client_id: kakaoClientId,
+                            redirect_uri: kakaoRedirectUri,
+                            code: code,
+                        }).toString(),
+                    });
 
-                const result = await response.json();
+                    const result = await response.json();
 
-                if (result.access_token) {
-                    // 사용자 정보 요청 함수 호출 가능
-                    await fetchUserInfo(result.access_token);
+                    if (result.access_token) {
+                        // 사용자 정보 요청 함수 호출 가능
+                        await fetchUserInfo(result.access_token, state);
+                    }
+                } catch (error) {
+                    console.error("Error fetching access token:", error);
                 }
-            } catch (error) {
-                console.error("Error fetching access token:", error);
+            } else if (state === "google") {
+                // 인증 코드로 액세스 토큰 요청
+                try {
+                    const response = await fetch("https://oauth2.googleapis.com/token", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: new URLSearchParams({
+                            code: code,
+                            client_id: googleClientId,
+                            client_secret: googleClientSecretKey,
+                            redirect_uri: googleRedirectUri,
+                            grant_type: "authorization_code",
+                        }).toString(),
+                    });
+
+                    const result = await response.json();
+
+                    if (result.access_token) {
+                        // 사용자 정보 요청 함수 호출 가능
+                        await fetchUserInfo(result.access_token, state);
+                    }
+                } catch (error) {
+                    console.error("Error fetching access token:", error);
+                }
             }
         };
 
-        const fetchUserInfo = async (accessToken) => {
+        const fetchUserInfo = async (accessToken, state) => {
             try {
-                const response = await fetch("https://kapi.kakao.com/v2/user/me", {
-                    method: "GET",
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-                    },
-                });
+                if (state === "kakao") {
+                    const userInfoResponse = await fetch("https://kapi.kakao.com/v2/user/me", {
+                        method: "GET",
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+                        },
+                    });
 
-                const userData = await response.json();
-                setUserInfo(userData);
+                    const userData = await userInfoResponse.json();
+                    setUserInfo(userData);
+                    logoutKakao(accessToken);
+                } else if (state === "google") {
+                    // 기본 사용자 정보 가져오기
+                    const userInfoResponse = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
+                        method: "GET",
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    });
+
+                    const userData = await userInfoResponse.json();
+                    setUserInfo({ ...userData });
+
+                    // 추가 사용자 정보 (예: 전화번호) 가져오기 (google에서 일반적으로 핸드폰을 제공하지 않아 해당 기능 비활성화)
+                    // const peopleApiResponse = await fetch(
+                    //     "https://people.googleapis.com/v1/people/me?personFields=phoneNumbers",
+                    //     {
+                    //         method: "GET",
+                    //         headers: {
+                    //             Authorization: `Bearer ${accessToken}`,
+                    //         },
+                    //     }
+                    // );
+
+                    // const userPhoneData = await peopleApiResponse.json();
+
+                    // const phoneNumbers = userPhoneData.phoneNumbers ? userPhoneData.phoneNumbers : "null";
+                }
             } catch (error) {
                 console.error("Error fetching user info:", error);
             }
         };
 
         handleGetToken();
-    }, []);
+    }, [setUserInfo]);
+
+    // Kakao 로그아웃
+    const logoutKakao = async (access_token) => {
+        try {
+            await fetch("https://kapi.kakao.com/v1/user/logout", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${access_token}`,
+                },
+            });
+            console.log("Kakao logout successfule");
+        } catch (error) {
+            console.error("Error logging out from Kakao:", error);
+        }
+    };
 
     const StartQuestionBtn = () => {
         navigate("/question");

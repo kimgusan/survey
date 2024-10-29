@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../api/userContext";
 import { handleSaveToSheet } from "../api/postGoogleSheet";
-import { MousePointer2, SquareMousePointer } from "lucide-react";
+import { SquareMousePointer } from "lucide-react";
 
 const allProducts = [
     {
@@ -70,7 +70,7 @@ const allGrandMatherImg = [
 
 const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelectedAnswers, questions }) => {
     const navigate = useNavigate();
-    const { userInfo } = useContext(UserContext);
+    const { userInfo, setUserInfo } = useContext(UserContext);
 
     useEffect(() => {
         if (userInfo) {
