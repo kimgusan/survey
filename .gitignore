@@ -26,3 +26,5 @@ yarn-error.log*
 
 # .env 파일 무시
 .env
+
+static/js/
