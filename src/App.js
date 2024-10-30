@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./components/Login";
 import Question from "./components/Question";
 import Result from "./components/Result";
-import Layout from "./components/Layout"; // 공통 레이아웃 컴포넌트
+import Layout from "./components/Layout"; // 공통 레이아웃
 import SubmitSummary from "./components/SubmitSummary";
 import { useState } from "react";
 import { UserProvider } from "./api/userContext";
