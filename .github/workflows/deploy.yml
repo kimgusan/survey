@@ -8,7 +8,7 @@ on:
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
-        environment: gh-pages # 환경 명시
+        environment: main # 환경 명시
 
         steps:
             - name: Checkout code
@@ -17,7 +17,7 @@ jobs:
             - name: Set up Node.js
               uses: actions/setup-node@v2
               with:
-                  node-version: "16"
+                  node-version: "20"
 
             - name: Install dependencies
               run: npm install
