@@ -33,6 +33,7 @@ jobs:
                   REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
                   REACT_APP_GOOGLE_CLIENT_SECRET_KEY: ${{ secrets.REACT_APP_GOOGLE_CLIENT_SECRET_KEY }}
                   REACT_APP_GOOGLE_REDIRECT_URI: ${{ secrets.REACT_APP_GOOGLE_REDIRECT_URI }}
+                  REACT_APP_GOOGLE_SHEET_URI: ${{ secrets.REACT_APP_GOOGLE_SHEET_URI }}
                   REACT_APP_KAKAO_CLIENT_ID: ${{ secrets.REACT_APP_KAKAO_CLIENT_ID }}
                   REACT_APP_KAKAO_REDIRECT_URI: ${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}
 
