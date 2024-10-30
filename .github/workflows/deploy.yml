@@ -23,6 +23,15 @@ jobs:
               run: npm install
 
               # Print environment variables (환경 변수 출력 단계 추가)
+            - name: Print environment variables
+              run: |
+                  echo "REACT_APP_GOOGLE_REDIRECT_URI=${{ secrets.REACT_APP_GOOGLE_REDIRECT_URI }}"
+                  echo "REACT_APP_KAKAO_CLIENT_ID=${{ secrets.REACT_APP_KAKAO_CLIENT_ID }}"
+                  echo "REACT_APP_KAKAO_REDIRECT_URI=${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}"
+              env:
+                  REACT_APP_GOOGLE_SHEET_URI: ${{ secrets.REACT_APP_GOOGLE_SHEET_URI }}
+                  REACT_APP_KAKAO_CLIENT_ID: ${{ secrets.REACT_APP_KAKAO_CLIENT_ID }}
+                  REACT_APP_KAKAO_REDIRECT_URI: ${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}
             - name: Build project
               run: npm run build
 
@@ -31,18 +40,3 @@ jobs:
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./build
-
-            - name: Print environment variables
-              run: |
-                  echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}"
-                  echo "REACT_APP_GOOGLE_CLIENT_SECRET_KEY=${{ secrets.REACT_APP_GOOGLE_CLIENT_SECRET_KEY }}"
-                  echo "REACT_APP_GOOGLE_REDIRECT_URI=${{ secrets.REACT_APP_GOOGLE_REDIRECT_URI }}"
-                  echo "REACT_APP_KAKAO_CLIENT_ID=${{ secrets.REACT_APP_KAKAO_CLIENT_ID }}"
-                  echo "REACT_APP_KAKAO_REDIRECT_URI=${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}"
-              env:
-                  REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
-                  REACT_APP_GOOGLE_CLIENT_SECRET_KEY: ${{ secrets.REACT_APP_GOOGLE_CLIENT_SECRET_KEY }}
-                  REACT_APP_GOOGLE_REDIRECT_URI: ${{ secrets.REACT_APP_GOOGLE_REDIRECT_URI }}
-                  REACT_APP_GOOGLE_SHEET_URI: ${{ secrets.REACT_APP_GOOGLE_SHEET_URI }}
-                  REACT_APP_KAKAO_CLIENT_ID: ${{ secrets.REACT_APP_KAKAO_CLIENT_ID }}
-                  REACT_APP_KAKAO_REDIRECT_URI: ${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}
