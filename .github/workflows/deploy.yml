@@ -1,4 +1,4 @@
-name: https://kimgusan.github.io/survey
+name: Deploy to Github Pages
 
 on:
     push:
