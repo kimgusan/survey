@@ -94,7 +94,7 @@ const SubmitSummary = () => {
                     setUserInfo(userData);
                     logoutKakao(accessToken);
                 } else if (state === "google") {
-                    // 기본 사용자 정보 가져오기
+                    // 기본 사용자 정보 가져오기.
                     const userInfoResponse = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
                         method: "GET",
                         headers: {
