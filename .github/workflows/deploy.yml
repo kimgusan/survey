@@ -8,7 +8,7 @@ on:
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
-        environment: github-pages # 환경 명시
+        environment: gh-pages # 환경 명시
 
         steps:
             - name: Checkout code
@@ -22,6 +22,22 @@ jobs:
             - name: Install dependencies
               run: npm install
 
+            # Print environment variables (환경 변수 출력 단계 추가)
+            - name: Print environment variables
+              run: |
+                  echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}"
+                  echo "REACT_APP_GOOGLE_CLIENT_SECRET_KEY=${{ secrets.REACT_APP_GOOGLE_CLIENT_SECRET_KEY }}"
+                  echo "REACT_APP_GOOGLE_REDIRECT_URI=${{ secrets.REACT_APP_GOOGLE_REDIRECT_URI }}"
+                  echo "REACT_APP_KAKAO_CLIENT_ID=${{ secrets.REACT_APP_KAKAO_CLIENT_ID }}"
+                  echo "REACT_APP_KAKAO_REDIRECT_URI=${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}"
+              env:
+                  REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
+                  REACT_APP_GOOGLE_CLIENT_SECRET_KEY: ${{ secrets.REACT_APP_GOOGLE_CLIENT_SECRET_KEY }}
+                  REACT_APP_GOOGLE_REDIRECT_URI: ${{ secrets.REACT_APP_GOOGLE_REDIRECT_URI }}
+                  REACT_APP_GOOGLE_SHEET_URI: ${{ secrets.REACT_APP_GOOGLE_SHEET_URI }}
+                  REACT_APP_KAKAO_CLIENT_ID: ${{ secrets.REACT_APP_KAKAO_CLIENT_ID }}
+                  REACT_APP_KAKAO_REDIRECT_URI: ${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}
+
             - name: Build project
               env:
                   REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
@@ -30,7 +46,8 @@ jobs:
                   REACT_APP_GOOGLE_SHEET_URI: ${{ secrets.REACT_APP_GOOGLE_SHEET_URI }}
                   REACT_APP_KAKAO_CLIENT_ID: ${{ secrets.REACT_APP_KAKAO_CLIENT_ID }}
                   REACT_APP_KAKAO_REDIRECT_URI: ${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}
-              run: npm run build
+              run: |
+                  echo "Building project..."
 
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
