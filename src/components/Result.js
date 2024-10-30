@@ -76,7 +76,7 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
         if (userInfo) {
             handleSaveToSheet(userInfo, setUserInfo);
         }
-    }, [userInfo]);
+    }, [userInfo, setUserInfo]);
 
     const calculateResult = () => {
         const totalScore = selectedAnswers.reduce((sum, answer) => sum + (answer !== null ? answer + 1 : 0), 0);
