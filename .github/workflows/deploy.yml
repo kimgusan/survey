@@ -8,7 +8,7 @@ on:
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
-        environment: main # 환경 명시
+        environment: github-pages # 환경 명시
 
         steps:
             - name: Checkout code
