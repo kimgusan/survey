@@ -16,7 +16,7 @@ jobs:
             - name: Set up Node.js
               uses: actions/setup-node@v2
               with:
-                  node-version: "16" # Node 버전을 필요에 따라 변경
+                  node-version: "16"
 
             - name: Install dependencies
               run: npm install
@@ -31,8 +31,8 @@ jobs:
                   REACT_APP_KAKAO_REDIRECT_URI: ${{ secrets.REACT_APP_KAKAO_REDIRECT_URI }}
               run: npm run build
 
-            - name: Deploy to GitHub pages
-              uses: peaceiris/gh-pages-action@v3
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/gh-pages@v3
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./build
