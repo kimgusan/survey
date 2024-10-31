@@ -1,12 +1,14 @@
-const redirect_uri = process.env.REACT_APP_GOOGLE_REDIRECT_URI;
-const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+import { customAxios } from "../api/customAxios";
 
 const SocialGoogle = () => {
-    const scope = "profile email https://www.googleapis.com/auth/user.phonenumbers.read";
-
-    const handleLogin = () => {
-        const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirect_uri}&response_type=code&scope=${scope}&state=google`;
-        window.location.href = googleAuthUrl;
+    const handleLogin = async () => {
+        try {
+            const response = await customAxios().get("/auth/google/authorize");
+            // 백엔드에서 Google 인증 페이지로 리다이렉트 되도록 설정된 응답을 받습니다.
+            window.location.href = response.data.url; // JSON 객체에서 URL을 가져옴
+        } catch (error) {
+            console.error("Failed to redirect to Google login", error);
+        }
     };
 
     return (

@@ -1,12 +1,11 @@
 // App.js
-import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Login from "./components/Login";
 import Question from "./components/Question";
 import Result from "./components/Result";
-import Layout from "./components/Layout"; // 공통 레이아웃
+import Layout from "./components/Layout";
 import SubmitSummary from "./components/SubmitSummary";
-import { useState } from "react";
 import { UserProvider } from "./api/userContext";
 
 const questions = [

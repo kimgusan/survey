@@ -1,9 +1,13 @@
-const client_id = process.env.REACT_APP_KAKAO_CLIENT_ID;
-const redirect_uri = process.env.REACT_APP_KAKAO_REDIRECT_URI;
+import { customAxios } from "./customAxios";
 
 const SocialKakao = () => {
-    const handleLogin = () => {
-        window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&state=kakao`;
+    const handleLogin = async () => {
+        try {
+            const response = await customAxios().get("/auth/kakao/authorize");
+            window.location.href = response.data.url;
+        } catch (error) {
+            console.error("Failed to redirect to Kakao Login", error);
+        }
     };
 
     return (
