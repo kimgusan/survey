@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="refresh" content="0; URL='/'" />
+        <meta charset="UTF-8" />
         <script type="text/javascript">
-            // GitHub Pages 404 redirect for SPA
-            var redirect = window.location.pathname + window.location.search + window.location.hash;
-            if (redirect && redirect !== "/") {
-                window.location.replace("/?" + redirect);
-            } else {
-                window.location.replace("/");
+            // GitHub Pages에서 404 발생 시, 사용자가 요청한 경로로 리다이렉트
+            var pathname = window.location.pathname;
+            var search = window.location.search;
+            var hash = window.location.hash;
+
+            // 현재 경로가 "/survey"로 시작하지 않으면 "/survey"로 수정
+            if (!pathname.startsWith("/survey")) {
+                pathname = "/survey" + pathname;
             }
+
+            // 404 발생 시 "/survey/index.html"로 리다이렉트하고 경로 정보 추가
+            window.location.replace("/survey/index.html" + "#" + pathname + search + hash);
         </script>
     </head>
     <body></body>
