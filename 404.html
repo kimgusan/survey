@@ -3,9 +3,13 @@
     <head>
         <meta http-equiv="refresh" content="0; URL='/'" />
         <script type="text/javascript">
-            // GitHub Pages 404 redirect
-            var path = window.location.pathname.replace("/survey", "") + window.location.search + window.location.hash;
-            window.location.replace("/survey" + "#!" + path);
+            // GitHub Pages 404 redirect for SPA
+            var redirect = window.location.pathname + window.location.search + window.location.hash;
+            if (redirect && redirect !== "/") {
+                window.location.replace("/?" + redirect);
+            } else {
+                window.location.replace("/");
+            }
         </script>
     </head>
     <body></body>
