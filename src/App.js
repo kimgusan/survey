@@ -1,6 +1,6 @@
 // App.js
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./components/Login";
 import Question from "./components/Question";
 import Result from "./components/Result";
