@@ -19,6 +19,7 @@ const SocialKakao = () => {
                             src={`${process.env.PUBLIC_URL}/loginIcon/btn_kakao.svg`}
                             alt="KaKao"
                             className="w-full h-full"
+                            style={{ pointerEvents: "none" }}
                         />
                     </button>
                 </div>
