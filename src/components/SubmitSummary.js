@@ -3,6 +3,10 @@ import CertificationContainer from "./CertificationContainer";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../api/userContext";
 
+// const API_SERVER = "https://returnplus.kr:8888/";
+// const API_SERVER = "http://localhost:8000/";
+const API_SERVER = "https://97a6-119-64-83-163.ngrok-free.app/";
+
 const SubmitSummary = () => {
     const { userInfo, setUserInfo } = useContext(UserContext);
     const navigate = useNavigate();
@@ -25,8 +29,16 @@ const SubmitSummary = () => {
             // 인증 코드를 백엔드로 전달하여 사용자 정보를 요청
             if (state === "kakao" || state === "google") {
                 try {
-                    const response = await fetch(`http://localhost:8000/auth/${state}/callback?code=${code}`);
+                    console.log("ininininin");
+                    const response = await fetch(`${API_SERVER}auth/${state}/callback?code=${code}`, {
+                        headers: {
+                            // ngrok 을 사용할 때 무료버젼의 경우 경고 메세지 무시
+                            "ngrok-skip-browser-warning": "true",
+                        },
+                    });
+                    console.log("response", response);
                     const result = await response.json();
+                    console.log("result", result);
 
                     if (response.ok && result.user_info) {
                         // 사용자 정보를 UserContext에 저장

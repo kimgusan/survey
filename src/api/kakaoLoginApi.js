@@ -9,7 +9,6 @@ const SocialKakao = () => {
             console.error("Failed to redirect to Kakao Login", error);
         }
     };
-
     return (
         <>
             <div className="w-full grid gap-4 ">

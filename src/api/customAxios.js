@@ -1,13 +1,17 @@
 import axios from "axios";
 
-const API_SERVER = "http://localhost:8000/";
+// const API_SERVER = "http://localhost:8000/";
+// const API_SERVER = "https://returnplus.kr:8888/";
+const API_SERVER = "https://97a6-119-64-83-163.ngrok-free.app/";
 
 // 기본 설정을 받아 axios 인스턴스 생성
 export const createAxios = (configs) => {
     const INITIAL_CONFIGS = {
         baseURL: `${API_SERVER}`,
         withCredentials: true,
-        headers: {},
+        headers: {
+            "ngrok-skip-browser-warning": "any-value", // ngrok 경고 무시
+        },
     };
     return axios.create(Object.assign(INITIAL_CONFIGS, configs));
 };
