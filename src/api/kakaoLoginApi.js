@@ -1,4 +1,5 @@
 import { customAxios } from "./customAxios";
+import { Browser } from "@capacitor/browser";
 
 const SocialKakao = () => {
     const handleLogin = async () => {
@@ -9,6 +10,16 @@ const SocialKakao = () => {
             console.error("Failed to redirect to Kakao Login", error);
         }
     };
+    // 모바일에서 사용 시 유용하게 사용하기 위한 기능. (모바일 빌드 시 사용)
+    // const handleLogin = async () => {
+    //     try {
+    //         const response = await customAxios().get("/auth/kakao/authorize");
+    //         await Browser.open({ url: response.data.url }); // 외부 브라우저에서 열기
+    //     } catch (error) {
+    //         console.error("Failed to open browser for Kakao Login", error);
+    //     }
+    // };
+
     return (
         <>
             <div className="w-full grid gap-4 ">
