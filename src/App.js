@@ -7,6 +7,7 @@ import Result from "./components/Result";
 import Layout from "./components/Layout";
 import SubmitSummary from "./components/SubmitSummary";
 import { UserProvider } from "./api/userContext";
+import PrivacyPolicyNotice from "./components/privacyPolicyNotice";
 
 const questions = [
     {
@@ -137,6 +138,7 @@ const App = () => {
                     <Route element={<Layout />}>
                         <Route path="/" element={<Navigate to="/login" />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/privacyPolicyNotice" element={<PrivacyPolicyNotice />} />
                         <Route path="/submitsummary" element={<SubmitSummary />} />
                         <Route path="/question" element={<Question {...props} />} />
                         <Route path="/result" element={<Result {...props} />} />

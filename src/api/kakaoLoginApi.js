@@ -1,5 +1,5 @@
 import { customAxios } from "./customAxios";
-import { Browser } from "@capacitor/browser";
+// import { Browser } from "@capacitor/browser";
 
 const SocialKakao = () => {
     const handleLogin = async () => {

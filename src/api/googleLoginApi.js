@@ -1,4 +1,4 @@
-import { customAxios } from "../api/customAxios";
+import { customAxios } from "./customAxios";
 
 const SocialGoogle = () => {
     const handleLogin = async () => {
