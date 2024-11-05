@@ -1,6 +1,5 @@
 import React from "react";
 import CertificationContainer from "./CertificationContainer";
-import PrivacyPolicyNotice from "./privacyPolicyNotice";
 import SocialKakao from "../api/kakaoLoginApi";
 import SocialGoogle from "../api/googleLoginApi";
 import { ErrorOutline } from "@mui/icons-material";
