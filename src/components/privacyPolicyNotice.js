@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 const PrivacyPolicyNotice = () => {
+    const navigate = useNavigate();
+
+    const onClickRollback = () => {
+        navigate("/");
+    };
+
     return (
         <div className="min-h-screen bg-gray-100 py-8 px-4 flex items-center justify-center">
             <div className="bg-white p-8 rounded-md shadow-lg max-w-4xl w-full text-black">
@@ -92,7 +100,7 @@ const PrivacyPolicyNotice = () => {
 
                 <h3 className="text-xl font-semibold mt-8 mb-4">문의</h3>
                 <p>
-                    개인정보 보호 책임자: 최정만
+                    개인정보 보호 담당자: 김규산
                     <br />
                     이메일:{" "}
                     <a href="mailto:daeyeonpn@gmail.com" className="text-blue-500 underline">
@@ -102,6 +110,14 @@ const PrivacyPolicyNotice = () => {
                     전화: 010-0000-0000
                 </p>
                 <p className="mt-4">시행일자: 2024년 11월 5일</p>
+                <div className="text-center mt-5">
+                    <button
+                        className="bg-blue-500 text-white px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-blue-600 hover:text-white"
+                        onClick={onClickRollback}
+                    >
+                        초기화면으로
+                    </button>
+                </div>
             </div>
         </div>
     );
