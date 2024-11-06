@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/survey/static/css/main.f79f1946.css",
-    "main.js": "/survey/static/js/main.9a162956.js",
+    "main.js": "/survey/static/js/main.87bc446b.js",
     "service-worker.js": "/survey/service-worker.js",
     "index.html": "/survey/index.html",
     "main.f79f1946.css.map": "/survey/static/css/main.f79f1946.css.map",
-    "main.9a162956.js.map": "/survey/static/js/main.9a162956.js.map"
+    "main.87bc446b.js.map": "/survey/static/js/main.87bc446b.js.map"
   },
   "entrypoints": [
     "static/css/main.f79f1946.css",
-    "static/js/main.9a162956.js"
+    "static/js/main.87bc446b.js"
   ]
 }
