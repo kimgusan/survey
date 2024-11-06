@@ -4,6 +4,10 @@ export const handleSaveToSheet = async (userInfo, setUserInfo) => {
     const dataToSubmit = new FormData();
     const url = process.env.REACT_APP_GOOGLE_SHEET_URI;
 
+    // 현재 날짜와 시간을 생성일자로 추가
+    const createdDate = new Date().toLocaleString();
+    dataToSubmit.append("create_date", createdDate);
+
     if (userInfo && userInfo.kakao_account) {
         const { kakao_account } = userInfo;
         const name = kakao_account.name || "";

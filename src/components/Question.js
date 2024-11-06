@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import CertificationContainer from "./CertificationContainer";
+// import { UserContext } from "../api/userContext";
 
 const Question = ({
     currentQuestion,

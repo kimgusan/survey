@@ -23,15 +23,15 @@
             </intent-filter>
 
             <!-- Custom Scheme for OAuth -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
 
-                <!-- Custom scheme (modify com.example.app to your app's scheme) -->
-                <data android:scheme="com.example.app" android:host="submitsummary" />
-            </intent-filter>
+<!--                &lt;!&ndash; Custom scheme (modify com.example.app to your app's scheme) &ndash;&gt;-->
+<!--                <data android:scheme="com.example.app" android:host="submitsummary" />-->
+<!--            </intent-filter>-->
 
         </activity>
 

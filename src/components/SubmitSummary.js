@@ -48,21 +48,21 @@ const SubmitSummary = () => {
         };
 
         handleGetToken(); // 컴포넌트가 마운트될 때 handleGetToken 함수 실행
-    }, [setUserInfo]);
+    }, []);
 
     // Kakao 로그아웃
-    const logoutKakao = async (access_token) => {
-        try {
-            await fetch("https://kapi.kakao.com/v1/user/logout", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${access_token}`,
-                },
-            });
-        } catch (error) {
-            console.error("Error logging out from Kakao:", error);
-        }
-    };
+    // const logoutKakao = async (access_token) => {
+    //     try {
+    //         await fetch("https://kapi.kakao.com/v1/user/logout", {
+    //             method: "POST",
+    //             headers: {
+    //                 Authorization: `Bearer ${access_token}`,
+    //             },
+    //         });
+    //     } catch (error) {
+    //         console.error("Error logging out from Kakao:", error);
+    //     }
+    // };
 
     const StartQuestionBtn = () => {
         navigate("/question");
