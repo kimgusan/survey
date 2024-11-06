@@ -1,3 +1,7 @@
+# tip.
+
+-   mobile에 capacitor를 사용할때는 package.json 항목의 homepage를 제거 후 사용한다.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

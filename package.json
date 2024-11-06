@@ -5,6 +5,7 @@
     "dependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@capacitor/android": "^6.1.2",
+        "@capacitor/browser": "^6.0.3",
         "@capacitor/cli": "^6.1.2",
         "@capacitor/core": "^6.1.2",
         "@emotion/react": "^11.13.3",
