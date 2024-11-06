@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import CertificationContainer from "./CertificationContainer";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../api/userContext";
+import LoginSession from "./LoginSession";
 
 const API_SERVER = "https://api.returnplus.kr/";
 
@@ -118,6 +119,7 @@ const SubmitSummary = () => {
                     설문 조사 시작
                 </button>
             </div>
+            <LoginSession />
         </div>
     );
 };

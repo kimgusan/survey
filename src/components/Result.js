@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../api/userContext";
 import { handleSaveToSheet } from "../api/postGoogleSheet";
 import { SquareMousePointer } from "lucide-react";
+import LoginSession from "./LoginSession";
 
 const allProducts = [
     {
@@ -171,78 +172,83 @@ const Result = ({ selectedAnswers, setShowResult, setCurrentQuestion, setSelecte
     }, [resultImage]);
 
     return (
-        <div className="w-full max-w-5xl p-6 mx-auto bg-white rounded-lg shadow-xl">
-            <h2 className="mb-4 text-2xl font-bold text-gray-800">
-                {userInfo?.properties?.nickname
-                    ? `${userInfo.properties.nickname}님의 노후 준비 결과`
-                    : "노후 준비 결과"}
-            </h2>
-            <div className="p-4 mb-4 bg-blue-100 rounded-lg">
-                <div className="flex justify-between items-center">
-                    <p className="text-lg font-semibold text-blue-800">
-                        총점: {totalScore} / {questions.length * 4}
-                    </p>
-                    <div className="flex bg-blue-300 p-2 hover:shadow-lg  transition-shadow duration-300 rounded-lg">
-                        <button className="text-lg font-semibold text-blue-800 mr-1" onClick={imageClick}>
-                            추천상품 Top 3
-                        </button>
-                        <SquareMousePointer style={{ width: "22px", height: "22px", color: "#172A9F" }} />
-                    </div>
-                </div>
-                <p className="text-lg font-semibold text-blue-800">노후 준비 상태: {status}</p>
-            </div>
-            <div className="mb-6">
-                {imageTitle && <h1 className="mb-4 font-normal text-2xl">{imageTitle}</h1>}
-                {finalImage ? (
-                    <>
-                        <img
-                            onClick={imageClick}
-                            src={finalImage}
-                            alt={allGrandMatherImg[4].name}
-                            className="w-auto h-auto"
-                            loading="eager"
-                            decoding="async"
-                        />
-                        {imageRecommendation && (
-                            <p className="bg-gray-100 p-4 rounded-md text-lg mt-5">{imageRecommendation}</p>
-                        )}
-                    </>
-                ) : (
-                    <>
-                        <p className="mb-4 text-base text-gray-700 pb-3">{recommendation}</p>
-                        <hr className="border-t border-gray-300 my-4 pb-3" />
-                        <h3 className="mb-2 text-xl font-bold text-center text-gray-700 pb-3">추천 상품 Top 3</h3>
-                        <div className="w-full grid grid-cols-3 gap-4 ">
-                            {products.map((product, index) => (
-                                <p key={index} className="flex flex-col items-center font-semibold ">
-                                    {index + 1}. {product.name}
-                                </p>
-                            ))}
-                            {products.map((product, index) => (
-                                <div
-                                    key={index}
-                                    className=" flex flex-col items-center border border-gray-300 rounded-lg"
-                                >
-                                    <img
-                                        src={product.path}
-                                        alt={product.name}
-                                        className="w-full h-auto"
-                                        loading="eager"
-                                        decoding="async"
-                                    />
-                                </div>
-                            ))}
+        <>
+            <div className="w-full max-w-5xl p-6 mx-auto bg-white rounded-lg shadow-xl">
+                <h2 className="mb-4 text-2xl font-bold text-gray-800">
+                    {userInfo?.properties?.nickname
+                        ? `${userInfo.properties.nickname}님의 노후 준비 결과`
+                        : "노후 준비 결과"}
+                </h2>
+                <div className="p-4 mb-4 bg-blue-100 rounded-lg">
+                    <div className="flex justify-between items-center">
+                        <p className="text-lg font-semibold text-blue-800">
+                            총점: {totalScore} / {questions.length * 4}
+                        </p>
+                        <div className="flex bg-blue-300 p-2 hover:shadow-lg  transition-shadow duration-300 rounded-lg">
+                            <button className="text-lg font-semibold text-blue-800 mr-1" onClick={imageClick}>
+                                추천상품 Top 3
+                            </button>
+                            <SquareMousePointer style={{ width: "22px", height: "22px", color: "#172A9F" }} />
                         </div>
-                    </>
-                )}
+                    </div>
+                    <p className="text-lg font-semibold text-blue-800">노후 준비 상태: {status}</p>
+                </div>
+                <div className="mb-6">
+                    {imageTitle && <h1 className="mb-4 font-normal text-2xl">{imageTitle}</h1>}
+                    {finalImage ? (
+                        <>
+                            <img
+                                onClick={imageClick}
+                                src={finalImage}
+                                alt={allGrandMatherImg[4].name}
+                                className="w-auto h-auto"
+                                loading="eager"
+                                decoding="async"
+                            />
+                            {imageRecommendation && (
+                                <p className="bg-gray-100 p-4 rounded-md text-lg mt-5">{imageRecommendation}</p>
+                            )}
+                        </>
+                    ) : (
+                        <>
+                            <p className="mb-4 text-base text-gray-700 pb-3">{recommendation}</p>
+                            <hr className="border-t border-gray-300 my-4 pb-3" />
+                            <h3 className="mb-2 text-xl font-bold text-center text-gray-700 pb-3">추천 상품 Top 3</h3>
+                            <div className="w-full grid grid-cols-3 gap-4 ">
+                                {products.map((product, index) => (
+                                    <p key={index} className="flex flex-col items-center font-semibold ">
+                                        {index + 1}. {product.name}
+                                    </p>
+                                ))}
+                                {products.map((product, index) => (
+                                    <div
+                                        key={index}
+                                        className=" flex flex-col items-center border border-gray-300 rounded-lg"
+                                    >
+                                        <img
+                                            src={product.path}
+                                            alt={product.name}
+                                            className="w-full h-auto"
+                                            loading="eager"
+                                            decoding="async"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+                <button
+                    className="w-full px-4 py-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
+                    onClick={restartQuiz}
+                >
+                    다시 시작
+                </button>
             </div>
-            <button
-                className="w-full px-4 py-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
-                onClick={restartQuiz}
-            >
-                다시 시작
-            </button>
-        </div>
+            <div className="w-full max-w-5xl">
+                <LoginSession />
+            </div>
+        </>
     );
 };
 

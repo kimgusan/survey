@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import CertificationContainer from "./CertificationContainer";
+import LoginSession from "./LoginSession";
 // import { UserContext } from "../api/userContext";
 
 const Question = ({
@@ -79,6 +80,9 @@ const Question = ({
                 <p className="mt-2 text-sm text-center text-gray-600">
                     {currentQuestion + 1} / {questions.length}
                 </p>
+            </div>
+            <div className="w-full max-w-2xl">
+                <LoginSession />
             </div>
         </>
     );
