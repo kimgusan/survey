@@ -19,7 +19,7 @@ const Login = () => {
                 <h2 className="mb-4 text-2xl font-bold text-gray-800 text-center">로그인 방식을 선택하세요.</h2>
                 <div className="flex">
                     <SocialKakao />
-                    <SocialGoogle />
+                    {/* <SocialGoogle /> */}
                 </div>
             </div>
 
