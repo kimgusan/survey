@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import CertificationContainer from "./CertificationContainer";
 import LoginSession from "./LoginSession";
-// import { UserContext } from "../api/userContext";
+import { UserContext } from "../api/userContext";
 
 const Question = ({
     currentQuestion,
