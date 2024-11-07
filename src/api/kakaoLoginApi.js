@@ -1,10 +1,12 @@
 import { customAxios } from "./customAxios";
 import { Browser } from "@capacitor/browser";
 import { Http } from "@capacitor-community/http";
+import { useNavigate } from "react-router-dom";
 
 const API_SERVER = "https://api.returnplus.kr/";
 
 const SocialKakao = () => {
+    // 웹에서 기본적으로 사용했던 코드
     const handleLogin = async () => {
         try {
             const response = await customAxios().get("/auth/kakao/authorize");
@@ -13,26 +15,6 @@ const SocialKakao = () => {
             console.error("Failed to redirect to Kakao Login", error);
         }
     };
-    // 모바일에서 사용하기 위한 기능. (모바일 빌드 시 사용, package.json 항목 수정 필요)
-    // const handleLogin = async () => {
-    //     try {
-    //         const options = {
-    //             url: `${API_SERVER}auth/kakao/authorize`,
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "ngrok-skip-browser-warning": "any-value", // ngrok 경고 무시
-    //             },
-    //             params: {}, // 빈 params 필드 추가하여 NullPointerException 방지
-    //         };
-    //         // API 요청 보내기
-    //         const response = await Http.get(options);
-
-    //         // Kakao 로그인 URL로 리디렉션
-    //         await Browser.open({ url: response.data.url });
-    //     } catch (error) {
-    //         console.error("Failed to redirect to Kakao Login", error);
-    //     }
-    // };
     return (
         <>
             <div className="w-full grid gap-4 ">
