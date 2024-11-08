@@ -57,13 +57,12 @@ const SubmitSummary = () => {
     return (
         <div>
             <CertificationContainer />
-            {/* <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl"> */}
-            <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl max-h-[520px] sm:max-h-none overflow-y-auto">
+            <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl max-h-[520px] sm:max-h-none flex flex-col">
                 <h2 className="text-2xl font-bold text-gray-800 text-center">
                     - 재무 상태 분석 설문조사 이용정보 동의서 -
                 </h2>
-                <div className="mb-6 max-w-full mx-auto">
-                    <div className="bg-gray-100 p-4 rounded-md text-lg mt-5">
+                <div className="mb-6 max-w-full mx-auto flex-1 overflow-y-auto">
+                    <div className="bg-gray-100 p-4 rounded-md text-lg mt-5 h-full">
                         본 서비스는 <strong>개인정보 보호법</strong> 및 관련 법령에 따라 고객님의 소중한 개인정보를
                         보호하며, 다음의 목적을 위해 개인정보를 수집 및 이용합니다:
                         <br />
