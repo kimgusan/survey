@@ -10,13 +10,13 @@ export const handleSaveToSheet = async (userInfo, setUserInfo) => {
 
     if (userInfo && userInfo.kakao_account) {
         const { kakao_account } = userInfo;
-        const name = kakao_account.name || "";
+        const name = kakao_account.profile.nickname || "";
         const email = kakao_account.email || "";
         let phoneNumber = kakao_account.phone_number || "";
 
         // 전화번호 형식 조정
         if (phoneNumber.startsWith("+82")) {
-            phoneNumber = "010" + phoneNumber.slice(3).replace(/\s/g, ""); // 국가 코드 제거 및 공백 제거
+            phoneNumber = "0" + phoneNumber.slice(3).replace(/\s/g, ""); // 국가 코드 제거 및 공백 제거
             phoneNumber = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"); // 하이픈 추가
         } else {
             // 알 수 없는 국가 코드 또는 국가 코드 없이 제공된 경우
