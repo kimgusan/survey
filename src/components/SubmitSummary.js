@@ -57,7 +57,8 @@ const SubmitSummary = () => {
     return (
         <div>
             <CertificationContainer />
-            <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl">
+            {/* <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl"> */}
+            <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-xl max-h-[520px] sm:max-h-none overflow-y-auto">
                 <h2 className="text-2xl font-bold text-gray-800 text-center">
                     - 재무 상태 분석 설문조사 이용정보 동의서 -
                 </h2>
@@ -99,12 +100,19 @@ const SubmitSummary = () => {
                     </div>
                 </div>
                 <button
-                    className="w-full px-4 py-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
+                    // className="w-full px-4 py-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
+                    className="hidden sm:block w-full px-4 py-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
                     onClick={StartQuestionBtn}
                 >
                     설문 조사 시작
                 </button>
             </div>
+            <button
+                className="block sm:hidden w-full px-4 py-2 mt-2 text-base text-white transition-colors duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
+                onClick={StartQuestionBtn}
+            >
+                설문 조사 시작
+            </button>
             <LoginSession />
         </div>
     );
