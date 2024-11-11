@@ -19,11 +19,10 @@ const Login = () => {
                 <h2 className="mb-4 text-2xl font-bold text-gray-800 text-center">로그인 방식을 선택하세요.</h2>
                 <div className="flex">
                     <SocialKakao />
-                    {/* <SocialGoogle /> */}
                 </div>
             </div>
 
-            <div className="text-center mt-4 text-blue-800 flex items-center justify-center relative ">
+            <div className="text-center mt-4 text-blue-800 flex items-center justify-center relative">
                 <ErrorOutline
                     className="text-blue-800 mr-2 cursor-pointer hover:text-blue-600 focus:text-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none rounded"
                     style={{ fontSize: "20px", verticalAlign: "middle" }}

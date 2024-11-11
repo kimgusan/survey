@@ -100,14 +100,14 @@ const PrivacyPolicyNotice = () => {
 
                 <h3 className="text-xl font-semibold mt-8 mb-4">문의</h3>
                 <p>
-                    개인정보 보호 담당자: 김규산
+                    개인정보 보호 대연피앤씨: 최정만
                     <br />
                     이메일:{" "}
                     <a href="mailto:daeyeonpn@gmail.com" className="text-blue-500 underline">
                         deayeonpnc@gmail.com
                     </a>
                     <br />
-                    전화: 010-0000-0000
+                    대표전화: 1577-9872
                 </p>
                 <p className="mt-4">시행일자: 2024년 11월 5일</p>
                 <div className="text-center mt-5">

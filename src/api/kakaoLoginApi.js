@@ -1,13 +1,14 @@
 import { customAxios } from "./customAxios";
-import { Browser } from "@capacitor/browser";
-import { Http } from "@capacitor-community/http";
-import { useNavigate } from "react-router-dom";
-
-const API_SERVER = "https://api.returnplus.kr/";
 
 const SocialKakao = () => {
     // 웹에서 기본적으로 사용했던 코드
     const handleLogin = async () => {
+        // 인터넷 연결 상태 확인
+        if (!navigator.onLine) {
+            alert("인터넷 연결이 끊어졌습니다. 연결 상태를 확인해 주세요.");
+            return; // 인터넷 연결이 없으면 요청을 보내지 않음
+        }
+
         try {
             const response = await customAxios().get("/auth/kakao/authorize");
             window.location.href = response.data.url;
