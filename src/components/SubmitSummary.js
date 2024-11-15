@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../api/userContext";
 import LoginSession from "./LoginSession";
 
-const API_SERVER = "https://api.returnplus.kr/";
-
 const SubmitSummary = () => {
     const { userInfo, setUserInfo } = useContext(UserContext);
     const navigate = useNavigate();
@@ -28,12 +26,15 @@ const SubmitSummary = () => {
             // 인증 코드를 백엔드로 전달하여 사용자 정보를 요청
             if (state === "kakao" || state === "google") {
                 try {
-                    const response = await fetch(`${API_SERVER}auth/${state}/callback?code=${code}`, {
-                        headers: {
-                            // ngrok 을 사용할 때 무료버젼의 경우 경고 메세지 무시
-                            "ngrok-skip-browser-warning": "true",
-                        },
-                    });
+                    const response = await fetch(
+                        `${process.env.BACKEND_API_SERVER_URI}${state}/auth/profile?code=${code}`,
+                        {
+                            headers: {
+                                // ngrok 을 사용할 때 무료버젼의 경우 경고 메세지 무시
+                                "ngrok-skip-browser-warning": "true",
+                            },
+                        }
+                    );
                     const result = await response.json();
 
                     if (response.ok && result.user_info) {

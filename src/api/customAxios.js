@@ -1,12 +1,10 @@
 import axios from "axios";
 
-const API_SERVER = "https://api.returnplus.kr/";
-
 // 기본 설정을 받아 axios 인스턴스 생성
 export const createAxios = (configs) => {
     const INITIAL_CONFIGS = {
-        baseURL: `${API_SERVER}`,
-        withCredentials: true,
+        baseURL: `${process.env.BACKEND_API_SERVER_URI}`,
+        // withCredentials: true,
         headers: {
             "ngrok-skip-browser-warning": "any-value", // ngrok 경고 무시
         },

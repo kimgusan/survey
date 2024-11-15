@@ -10,7 +10,7 @@ const SocialKakao = () => {
         }
 
         try {
-            const response = await customAxios().get("/auth/kakao/authorize");
+            const response = await customAxios().get("/kakao/auth/authorize");
             window.location.href = response.data.url;
         } catch (error) {
             console.error("Failed to redirect to Kakao Login", error);
